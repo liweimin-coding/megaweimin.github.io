@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>megaweimin</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f7f2;
+      color: #171717;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: min(92vw, 680px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(40px, 8vw, 84px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      max-width: 560px;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        background: #111;
+        color: #f5f5f0;
+      }
+
+      p {
+        color: #c8c8c0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>megaweimin.com</h1>
+    <p>Personal website for megaweimin.</p>
+  </main>
+</body>
+</html>
