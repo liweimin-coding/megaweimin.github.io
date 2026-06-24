@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="李伟民的个人主页，记录产品、服务设计、硬件业务和新工作方式的实践。">
-  <title>李伟民 | megaweimin.com</title>
+  <meta name="description" content="Pinvou offline installer download.">
+  <title>Pinvou Offline Installer</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f7f2;
-      --ink: #171815;
-      --muted: #666a60;
-      --line: #dcded4;
+      --bg: #f5f7f8;
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d7dde5;
       --panel: #ffffff;
-      --accent: #0f766e;
-      --warn: #8a5a18;
-      --radius: 8px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      --primary: #0f766e;
+      --primary-dark: #0b5f59;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
     }
@@ -25,416 +24,120 @@
 
     body {
       margin: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(247,247,242,0) 360px), var(--bg);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 58%);
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .page {
-      width: min(1080px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    header {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-bottom: 1px solid var(--line);
+    main {
+      width: min(620px, 100%);
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 18px 48px rgba(17, 24, 39, .08);
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 750;
-    }
-
-    .mark {
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--ink);
-      font-size: 12px;
-      line-height: 1;
-    }
-
-    nav {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    nav a {
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 12px;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-    }
-
-    nav a:hover {
-      border-color: var(--line);
-      background: rgba(255,255,255,.68);
-      color: var(--ink);
-    }
-
-    main { padding: 72px 0 56px; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 320px;
-      gap: 56px;
-      align-items: end;
-      padding-bottom: 72px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .eyebrow {
-      margin: 0 0 20px;
-      color: var(--accent);
-      font-size: 14px;
+      gap: 12px;
+      margin-bottom: 28px;
       font-weight: 760;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      max-width: 760px;
-      margin-bottom: 24px;
-      font-size: clamp(44px, 8vw, 94px);
-      line-height: .98;
+    .mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
       letter-spacing: 0;
     }
 
-    .lead {
-      max-width: 690px;
-      margin-bottom: 32px;
-      color: var(--muted);
-      font-size: clamp(18px, 2.1vw, 22px);
-      line-height: 1.75;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .button.primary {
-      border-color: var(--ink);
-      background: var(--ink);
-      color: #fff;
-    }
-
-    .status {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.72);
-      overflow: hidden;
-    }
-
-    .status-head,
-    .status-row {
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .status-row:last-child { border-bottom: 0; }
-
-    .status strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .status span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, .72fr) minmax(260px, .28fr);
-      gap: 32px;
-      align-items: end;
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      margin-bottom: 0;
-      font-size: clamp(30px, 4vw, 48px);
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(30px, 6vw, 46px);
       line-height: 1.08;
       letter-spacing: 0;
     }
 
-    .section-note {
+    p {
       margin: 0;
       color: var(--muted);
+      font-size: 16px;
       line-height: 1.7;
     }
 
-    .grid {
+    .meta {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      min-height: 210px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-    }
-
-    .card small {
-      display: block;
-      margin-bottom: 28px;
-      color: var(--accent);
-      font-weight: 780;
-      text-transform: uppercase;
-    }
-
-    .card h3 {
-      margin-bottom: 14px;
-      font-size: 22px;
-      line-height: 1.25;
-    }
-
-    .card p {
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .notes { display: grid; gap: 12px; }
-
-    .note {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 24px;
+      gap: 10px;
+      margin: 28px 0;
       padding: 18px 0;
       border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .note:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    .note strong { color: var(--warn); }
-
-    .note p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .contact {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 320px;
-      gap: 24px;
-      align-items: stretch;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-    }
-
-    .contact h2 { margin-bottom: 16px; }
-
-    .contact p {
-      max-width: 620px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .facts {
-      display: grid;
-      gap: 12px;
-      align-content: start;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .fact {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .fact:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .fact strong {
+    .row strong {
       color: var(--ink);
       text-align: right;
     }
 
-    footer {
-      padding: 28px 0 48px;
-      color: var(--muted);
-      font-size: 14px;
+    .download {
+      width: 100%;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 760;
+      text-decoration: none;
     }
 
-    @media (max-width: 840px) {
-      header,
-      .hero,
-      .section-head,
-      .contact { grid-template-columns: 1fr; }
-      header { align-items: flex-start; padding: 18px 0; }
-      nav { flex-wrap: wrap; }
-      main { padding-top: 48px; }
-      .hero { gap: 32px; }
-      .grid { grid-template-columns: 1fr; }
+    .download:hover { background: var(--primary-dark); }
+
+    .hash {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 13px;
     }
 
-    @media (max-width: 560px) {
-      .page { width: min(100% - 24px, 1080px); }
-      .note { grid-template-columns: 1fr; gap: 8px; }
-      .contact { padding: 20px; }
-      .fact { display: grid; }
-      .fact strong { text-align: left; }
+    @media (max-width: 520px) {
+      main { padding: 24px; }
+      .row { display: grid; gap: 4px; }
+      .row strong { text-align: left; word-break: break-word; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <a class="brand" href="#top" aria-label="返回首页">
-        <span class="mark">LW</span>
-        <span>李伟民</span>
-      </a>
-      <nav aria-label="主导航">
-        <a href="#focus">当前方向</a>
-        <a href="#work">工作方式</a>
-        <a href="#contact">联系</a>
-      </nav>
-    </header>
+  <main>
+    <div class="brand"><span class="mark">P</span><span>Pinvou Offline Installer</span></div>
+    <h1>Download Pinvou installer</h1>
+    <p>This page provides the offline installation package for the Megacube device environment.</p>
 
-    <main id="top">
-      <div class="hero">
-        <div>
-          <p class="eyebrow">Product / Service Design / AI Workflow</p>
-          <h1>把复杂业务重新整理成清晰、可交付的产品系统。</h1>
-          <p class="lead">这是李伟民的个人静态主页。当前版本用于保留一个稳定入口，后续会逐步更新产品作品、业务复盘、服务设计方法和 AI 工作流实践。</p>
-          <div class="actions">
-            <a class="button primary" href="mailto:liweimin.pm@gmail.com">邮件联系</a>
-            <a class="button" href="assets/resume-source/李伟民%20—%20B端产品经理.pdf">查看简历</a>
-          </div>
-        </div>
+    <div class="meta" aria-label="Package information">
+      <div class="row"><span>Package</span><strong>pinvou3-nvfp4-mtp2-complete-offline-kit-20260617-v5.tar.zst</strong></div>
+      <div class="row"><span>Size</span><strong>30 GB</strong></div>
+      <div class="row"><span>Target OS</span><strong>Ubuntu 24.04 / aarch64</strong></div>
+    </div>
 
-        <aside class="status" aria-label="站点状态">
-          <div class="status-head">
-            <strong>megaweimin.com</strong>
-            <span>静态页面已重置，保留为个人主页入口。</span>
-          </div>
-          <div class="status-row">
-            <strong>当前内容</strong>
-            <span>产品、服务设计、硬件业务和 AI 工作方式。</span>
-          </div>
-          <div class="status-row">
-            <strong>更新节奏</strong>
-            <span>先保持简洁，之后按公开材料逐步补充。</span>
-          </div>
-        </aside>
-      </div>
-
-      <section id="focus">
-        <div class="section-head">
-          <h2>当前方向</h2>
-          <p class="section-note">从过去的业务实践出发，面向更系统的产品表达和更高效率的工作方式。</p>
-        </div>
-        <div class="grid">
-          <article class="card">
-            <small>01</small>
-            <h3>B 端产品与服务系统</h3>
-            <p>关注复杂角色、流程、交付链路和组织协作，把零散需求转化为可执行的产品方案。</p>
-          </article>
-          <article class="card">
-            <small>02</small>
-            <h3>硬件产品与市场路径</h3>
-            <p>围绕产品定义、SKU 策略、定价、渠道材料和销售赋能，建立从方案到上市的闭环。</p>
-          </article>
-          <article class="card">
-            <small>03</small>
-            <h3>AI 辅助工作流</h3>
-            <p>用自动化和模型能力重构资料整理、方案生成、内容更新和跨团队协作方式。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="work">
-        <div class="section-head">
-          <h2>工作方式</h2>
-          <p class="section-note">这个页面暂时不展开完整案例，先表达稳定的工作方法和后续内容结构。</p>
-        </div>
-        <div class="notes">
-          <div class="note">
-            <strong>理解现场</strong>
-            <p>从用户、客户、销售、实施和运营视角拆解真实场景，先还原问题，再定义产品边界。</p>
-          </div>
-          <div class="note">
-            <strong>结构化表达</strong>
-            <p>把业务判断写成清晰材料，包括目标、约束、方案、里程碑、风险和需要协同的事项。</p>
-          </div>
-          <div class="note">
-            <strong>系统化沉淀</strong>
-            <p>把一次性交付沉淀为模板、流程、资料库和可复用的工作流，降低后续协作成本。</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="contact">
-          <div>
-            <h2>联系</h2>
-            <p>如果需要了解我的产品经历、作品材料或新的合作机会，可以通过邮件联系。这个域名会作为长期更新入口。</p>
-            <div class="actions">
-              <a class="button primary" href="mailto:liweimin.pm@gmail.com">liweimin.pm@gmail.com</a>
-              <a class="button" href="assets/resume-source/产品岗-3年视频会议音视频产品经历-李伟民.pdf">备用简历</a>
-            </div>
-          </div>
-          <div class="facts" aria-label="基本信息">
-            <div class="fact"><span>Location</span><strong>广州</strong></div>
-            <div class="fact"><span>Domain</span><strong>megaweimin.com</strong></div>
-            <div class="fact"><span>Version</span><strong>Static 2026</strong></div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© 2026 李伟民 · megaweimin.com</span>
-    </footer>
-  </div>
+    <a class="download" href="http://127.0.0.1:8787/pinvou3-nvfp4-mtp2-complete-offline-kit-20260617-v5.tar.zst" download>Download Pinvou installer</a>
+    <p class="hash"><a href="http://127.0.0.1:8787/pinvou3-nvfp4-mtp2-complete-offline-kit-20260617-v5.tar.zst.sha256">SHA256 checksum</a></p>
+  </main>
 </body>
 </html>
